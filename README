@@ -13,15 +13,15 @@ Django utils
 
 Form Fields:
 
- - ISO8601DateField
- - ISO8601DatetimeField
- - ISO8601TimeField
+ - django_iso8601.ISO8601DateField
+ - django_iso8601.ISO8601DatetimeField
+ - django_iso8601.ISO8601TimeField
 
 Form Widgets:
 
- - ISO8601DateInput
- - ISO8601DatetimeInput
- - ISO8601TimeInput
+ - django_iso8601.ISO8601DateInput
+ - django_iso8601.ISO8601DatetimeInput
+ - django_iso8601.ISO8601TimeInput
 
 
 Tests
