@@ -1,0 +1,42 @@
+django-iso8601 provides Django tools for working with ISO 8601.
+
+You can find the latest version at http://github.com/k0001/django-iso8601
+
+Along with this project, you should have recieved a file named LICENSE with the
+licensing terms.
+
+Check the INSTALL file for install instructions
+
+
+Django utils
+============
+
+Form Fields:
+
+ - ISO8601DateField
+ - ISO8601DatetimeField
+ - ISO8601TimeField
+
+Form Widgets:
+
+ - ISO8601DateInput
+ - ISO8601DatetimeInput
+ - ISO8601TimeInput
+
+
+Tests
+=====
+
+You can run them with::
+
+    python setup.py test
+
+
+Thanks
+======
+
+Thanks to Gerhard Weis for his work on the 'isodate' library. You can find it
+at http://pypi.python.org/pypi/isodate
+
+
+
