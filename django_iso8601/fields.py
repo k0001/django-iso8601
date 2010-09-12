@@ -19,7 +19,7 @@ class ISO8601DateField(forms.Field):
         'invalid': _(u'Enter a valid ISO 8601 date.'),
     }
 
-    def __init__(self, yeardigits, **kwargs):
+    def __init__(self, yeardigits=4, **kwargs):
         self.yeardigits = yeardigits
         super(ISO8601DateField, self).__init__(**kwargs)
 
