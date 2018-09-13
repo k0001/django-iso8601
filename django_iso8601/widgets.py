@@ -17,7 +17,7 @@ class ISO8601DateInput(Input):
         self.format = format
         self.yeardigits = yeardigits
 
-    def _format_value(self, value):
+    def format_value(self, value):
         if isinstance(value, date):
             return isodate.date_isoformat(value, self.format, self.yeardigits)
         return value
@@ -30,7 +30,7 @@ class ISO8601DatetimeInput(Input):
         super(ISO8601DatetimeInput, self).__init__(attrs)
         self.format = format
 
-    def _format_value(self, value):
+    def format_value(self, value):
         if isinstance(value, datetime):
             return isodate.datetime_isoformat(value, self.format)
         return value
@@ -43,11 +43,11 @@ class ISO8601TimeInput(Input):
         super(ISO8601TimeInput, self).__init__(attrs)
         self.format = format
 
-    def _format_value(self, value):
+    def format_value(self, value):
         if isinstance(value, time):
             try:
                 return isodate.time_isoformat(value, self.format)
             except:
-                print repr(value), repr(self.format)
+                return repr(value)
         return value
 
