@@ -10,7 +10,7 @@ import unittest
 from datetime import date, datetime, time
 
 from isodate import parse_date, ISO8601Error, date_isoformat, FixedOffset, UTC, \
-    DATE_CENTURY, DATE_YEAR, DATE_MONTH, DATE_EXT_COMPLETE, DATE_BAS_COMPLETE, \
+    DATE_CENTURY, DATE_YEAR, DATE_EXT_MONTH, DATE_EXT_COMPLETE, DATE_BAS_COMPLETE, \
     DATE_BAS_ORD_COMPLETE, DATE_EXT_ORD_COMPLETE, DATE_BAS_WEEK, \
     DATE_BAS_WEEK_COMPLETE, DATE_EXT_WEEK, DATE_EXT_WEEK_COMPLETE, \
     TIME_BAS_MINUTE, TZ_BAS, TIME_EXT_MINUTE, TZ_EXT, TZ_HOUR, \
@@ -20,7 +20,7 @@ from isodate import parse_date, ISO8601Error, date_isoformat, FixedOffset, UTC, 
 DATE_Y4_TEST_CASES = [
     ('19', date(1901, 1, 1), DATE_CENTURY),
     ('1985', date(1985, 1, 1), DATE_YEAR),
-    ('1985-04', date(1985, 4, 1), DATE_MONTH),
+    ('1985-04', date(1985, 4, 1), DATE_EXT_MONTH),
     ('1985-04-12', date(1985, 4, 12), DATE_EXT_COMPLETE),
     ('19850412', date(1985, 4, 12), DATE_BAS_COMPLETE),
     ('1985102', date(1985, 4, 12), DATE_BAS_ORD_COMPLETE),
@@ -36,7 +36,7 @@ DATE_Y4_TEST_CASES = [
 DATE_Y6_TEST_CASES = [
     ('+0019', date(1901, 1, 1), DATE_CENTURY),
     ('+001985', date(1985, 1, 1), DATE_YEAR),
-    ('+001985-04', date(1985, 4, 1), DATE_MONTH),
+    ('+001985-04', date(1985, 4, 1), DATE_EXT_MONTH),
     ('+001985-04-12', date(1985, 4, 12), DATE_EXT_COMPLETE),
     ('+0019850412', date(1985, 4, 12), DATE_BAS_COMPLETE),
     ('+001985102', date(1985, 4, 12), DATE_BAS_ORD_COMPLETE),
@@ -123,10 +123,10 @@ def create_date_testcase(yeardigits, datestring, expectation, format):
             widget = ISO8601DateInput(format=format, yeardigits=yeardigits)
 
             if expectation is not None:
-                self.assertEqual(widget._format_value(expectation),
+                self.assertEqual(widget.format_value(expectation),
                                  datestring)
             else:
-                self.assertEqual(widget._format_value(expectation), None)
+                self.assertEqual(widget.format_value(expectation), None)
 
     return unittest.TestLoader().loadTestsFromTestCase(TestDate)
 
@@ -155,10 +155,10 @@ def create_datetime_testcase(datetimestring, expectation, format):
             widget = ISO8601DatetimeInput(format=format)
 
             if expectation is not None:
-                self.assertEqual(widget._format_value(expectation),
+                self.assertEqual(widget.format_value(expectation),
                                  datetimestring)
             else:
-                self.assertEqual(widget._format_value(expectation), None)
+                self.assertEqual(widget.format_value(expectation), None)
 
     return unittest.TestLoader().loadTestsFromTestCase(TestDatetime)
 
@@ -188,10 +188,10 @@ def create_time_testcase(timestring, expectation, format):
 
             if expectation is not None:
                 if format is not None:
-                    self.assertEqual(widget._format_value(expectation),
+                    self.assertEqual(widget.format_value(expectation),
                                      timestring)
             else:
-                self.assertEqual(widget._format_value(expectation), None)
+                self.assertEqual(widget.format_value(expectation), None)
 
     return unittest.TestLoader().loadTestsFromTestCase(TestTime)
 
